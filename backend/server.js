@@ -7,15 +7,29 @@
   const incomeRoutes = require("./routes/incomeRoutes");
   const expenseRoutes = require("./routes/expenseRoutes");
   const dashboardRoutes = require("./routes/dashboardRoutes");
+  const chatRoutes = require("./routes/chatRoutes");
 
   const app = express();
 
-  //Middleware to handle cors 
+  //Middleware to handle cors
+  const allowedOrigins = [
+    ...(process.env.CLIENT_URL ? process.env.CLIENT_URL.split(',').map((o) => o.trim()) : []),
+    'http://localhost:5173',
+    'http://localhost:5174',
+    'http://localhost:5175',
+  ];
+
   app.use(
     cors({
-        origin: process.env.CLIENT_URL || "*",
-        methods: ["GET", "POST", "PUT", "DELETE"],
-        allowedHeaders: ["Content-Type", "Authorization"],
+      origin: (origin, callback) => {
+        if (!origin || allowedOrigins.includes(origin)) {
+          callback(null, true);
+        } else {
+          callback(new Error(`CORS policy blocked origin ${origin}`));
+        }
+      },
+      methods: ['GET', 'POST', 'PUT', 'DELETE'],
+      allowedHeaders: ['Content-Type', 'Authorization'],
     })
   );
 
@@ -28,6 +42,7 @@
   app.use("/api/v1/income", incomeRoutes);
   app.use("/api/v1/expense", expenseRoutes);
   app.use("/api/v1/dashboard", dashboardRoutes);
+  app.use("/api/v1/chat", chatRoutes);
 
   //Serve uploads folder
   app.use("/uploads", express.static(path.join(__dirname, "uploads")));
