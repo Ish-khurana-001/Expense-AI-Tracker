@@ -2,6 +2,7 @@ import {
     LuLayoutDashboard,
     LuHandCoins,
     LuWalletMinimal,
+    LuMessageSquare,
     LuLogOut,
 } from 'react-icons/lu';
 
@@ -23,6 +24,12 @@ export const SIDE_MENU_DATA = [
         label: "Expense",
         icon: LuHandCoins,
         path: "/expense",
+    },
+    {
+        id: "04",
+        label: "Chat",
+        icon: LuMessageSquare,
+        path: "/chat",
     },
     {
         id: "06",

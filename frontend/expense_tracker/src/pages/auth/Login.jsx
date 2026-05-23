@@ -49,8 +49,9 @@ const Login = () => {
         navigate("/dashboard");
       }
     } catch (error) {
-      if(error.response && error.response.data.message) {
-        setError(error.response.data.message);
+      const serverMessage = error?.response?.data?.message || error?.response?.data?.error;
+      if (serverMessage) {
+        setError(serverMessage);
       } else {
         setError("Something went wrong. Please try again.");
       }
