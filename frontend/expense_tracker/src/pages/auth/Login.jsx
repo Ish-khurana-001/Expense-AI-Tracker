@@ -52,6 +52,10 @@ const Login = () => {
       const serverMessage = error?.response?.data?.message || error?.response?.data?.error;
       if (serverMessage) {
         setError(serverMessage);
+      } else if (error?.code === "ECONNABORTED") {
+        setError("The server is waking up. Please wait a few seconds and try again.");
+      } else if (!error?.response) {
+        setError("Unable to reach the server. Please try again.");
       } else {
         setError("Something went wrong. Please try again.");
       }
