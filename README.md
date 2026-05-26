@@ -24,8 +24,6 @@ GitHub Repository:
 https://github.com/your-username/your-repository-name
 ```
 
-Replace these links with the actual deployed frontend, backend, and GitHub repository links.
-
 ## Project Overview
 
 This project follows a full-stack architecture with a React frontend and a Node.js/Express backend. MongoDB is used as the database to store user accounts, income records, expense records, and transaction-related data.
