@@ -16,7 +16,6 @@ const CustomBarChart = ({data}) => {
         return entry.category || entry.month || entry.source || entry.name || "";
     };
 
-    //Function to alternate colors
     const getBarColor = (index) => {
         return index % 2 === 0 ? "#0f766e" : "#7dd3fc";
     }
