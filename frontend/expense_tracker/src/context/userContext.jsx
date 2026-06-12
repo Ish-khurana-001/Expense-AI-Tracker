@@ -16,7 +16,6 @@ const UserProvider = ({ children }) => {
             : "light";
     });
 
-    //Function to update user data
     const updateUser = (userData) => {
         setUser(userData);
     }
