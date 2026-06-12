@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-// import axios from 'axios';
 import AuthLayout from '../../components/layouts/AuthLayout'
 import { Link, useNavigate } from 'react-router-dom';
 import Input from '../../components/Inputs/Input';
@@ -24,7 +23,7 @@ const Signup = () => {
   const {updateUser} = useContext(UserContext);
   const navigate = useNavigate();
 
-  // Handle sign up form submit
+
   const handleSignUp = async (e) => {
     e.preventDefault();
 
@@ -47,10 +46,10 @@ const Signup = () => {
 
     setError("");
 
-    //Sign up API call
+
     try {
 
-      // Upload image if present
+  
       if (profilePic) {
         const imgUploadRes = await uploadImage(profilePic);
         profileImageUrl = imgUploadRes.imageUrl || "";
